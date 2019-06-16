@@ -1,0 +1,64 @@
+@import './../../../styles/mixins';
+
+#GridGameOnFocus {
+    @include dimensions(30%, 100%);
+    @include setImprovedFlex($direction: column);
+}
+
+// Big-Small Icons
+#GridBigIcon,
+#GridSmallIcon {
+    @include dimensions(100%, 80%);
+
+    img {
+        @include dimensions();
+        border-radius: 10%;
+    }
+}
+
+
+// Big-Small Titles
+#GridBigTitle,
+#GridSmallTitle {
+    @include dimensions(100%, 20%);
+    text-align: center;
+}
+
+#GridBigTitle {
+    font-size: 1em;
+    font-weight: 700;
+}
+
+#GridSmallTitle {
+    font-size: 0.6em;
+    font-weight: 600;
+}
+
+
+// Big-Small Images 
+#GridBigImg {
+    @include dimensions(93%, 70%);
+}
+
+#GridSmallImg {
+    @include dimensions(30%, 45%);
+}
+
+#GridBigImg,
+#GridSmallImg {
+    @include setImprovedFlex($direction: column);
+    cursor: pointer;
+
+    &:active {
+        transform: scale(0.95);
+    }
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+#GridOtherGames {
+    @include dimensions(62%, 100%);
+    @include setImprovedFlex($justify: space-around, $wrap: wrap);
+}

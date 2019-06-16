@@ -1,0 +1,8 @@
+@import './../../../styles/mixins';
+ 
+#SidePanel {
+  background: #000;
+  @include dimensions(25%, 100%);
+  @include setImprovedFlex($direction: column);
+}
+ 

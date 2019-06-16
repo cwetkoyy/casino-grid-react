@@ -1,0 +1,17 @@
+
+/** VARIABLES ABOUT CALCULATING 16:9 ASPECT RATION*/
+
+$minHeightFontSize: 12;
+$maxHeightFontSize: 56;
+$minHeight: 360;
+$maxHeight: 1280;
+$minWidthFontSize: 12;
+$maxWidthFontSize: 32;
+$minWidth: 360;
+$maxWidth: 1280;
+
+
+/** STARTING POINTS FOR ROTATION AND ANIMATION-DELAY IN LOADING ANIMATION */
+
+$startRotationDeg: 30;
+$startAnimDelay: -1.1s;

@@ -1,0 +1,6 @@
+@import './../../styles/mixins';
+
+#GridView {
+    @include dimensions();
+    @include setImprovedFlex($direction: column);
+}

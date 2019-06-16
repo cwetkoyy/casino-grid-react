@@ -1,0 +1,13 @@
+@import './../../../../styles/mixins';
+
+#SidePanelBody {
+  @include dimensions(100%, 50%);
+  @include setImprovedFlex();
+}
+
+#SidePanelText {
+  @include dimensions(90%, 100%);
+  @include setImprovedFlex();
+  font-size: 0.5em;
+  color: #fff;
+}

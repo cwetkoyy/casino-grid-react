@@ -1,0 +1,6 @@
+@import './../../styles/mixins';
+
+#ActiveItemView {
+  @include dimensions();
+  @include setImprovedFlex();
+}

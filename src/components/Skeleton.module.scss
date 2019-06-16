@@ -1,0 +1,9 @@
+@import './../styles/mixins';
+
+/** retains aspect ratio in 16:9 */
+#Skeleton {
+    @include aspect-ratio();
+    @include setImprovedFlex();
+    overflow: hidden;
+    background: #f7f7f7;
+}

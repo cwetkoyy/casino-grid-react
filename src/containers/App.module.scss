@@ -1,0 +1,26 @@
+@import './../styles/mixins';
+@import './../styles/variables';
+
+html,
+#App {
+  @include dimensions();
+  @include setImprovedFlex();
+  margin: 0;
+  padding: 0;
+  background: skyblue;
+}
+
+
+/* Calculating fliud fontSize */
+
+@media (min-aspect-ratio: 16/9) {
+  :root {
+    font-size: calc-fluid-font-size($minHeightFontSize, $maxHeightFontSize, $minHeight, $maxHeight, vh);
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  :root {
+    font-size: calc-fluid-font-size($minWidthFontSize, $maxWidthFontSize, $minWidth, $maxWidth, vw);
+  }
+}

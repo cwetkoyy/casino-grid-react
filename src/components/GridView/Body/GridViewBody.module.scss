@@ -1,0 +1,6 @@
+@import './../../../styles/mixins';
+
+#GridBody {
+    @include dimensions(100%, 85%);
+    @include setImprovedFlex($direction: space-evenly);
+}

@@ -1,0 +1,50 @@
+@import './../../../../styles/mixins';
+@import './../../../../styles/variables';
+
+.sk-fading-circle {
+    @include dimensions(40px, 45px);
+    @include adjust-position(null, null, relative);
+    margin: 100px auto;
+}
+
+.sk-fading-circle .sk-circle {
+    @include dimensions();
+    @include adjust-position(0, 0);
+}
+
+.sk-fading-circle .sk-circle:before {
+    @include dimensions(15%, 15%);
+    content: '';
+    display: block;
+    margin: 0 auto;
+    background-color: #333;
+    border-radius: 100%;
+    @include animation(sk-circleFadeDelay 1.2s infinite ease-in-out both);
+}
+
+/* this code eleminates over 30 lines of code :) */
+@for $i from 2 through 12 {
+    .sk-fading-circle .sk-circle#{$i} {
+        @include transform (rotate($startRotationDeg + deg));
+        $startRotationDeg: $startRotationDeg + 30;
+
+        &:before {
+            @include animation-delay($startAnimDelay);
+            $startAnimDelay: $startAnimDelay + 0.1;
+        }
+    }
+}
+
+
+@include keyframes(sk-circleFadeDelay) {
+
+    0%,
+    39%,
+    100% {
+        @include opacity(0);
+    }
+
+    40% {
+        @include opacity(1);
+    }
+}

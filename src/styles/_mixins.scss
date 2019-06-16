@@ -1,0 +1,184 @@
+
+/** FALLBACK MIXINS*/
+
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+
+    @-o-keyframes #{$name} {
+        @content;
+    }
+
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+@mixin transform($transforms...) {
+    transform: $transforms;
+    -webkit-transform: $transforms;
+    -moz-transform: $transforms;
+    -o-transform: $transforms;
+    -ms-transform: $transforms;
+}
+
+@mixin animation-delay($delay) {
+    animation-delay: $delay;
+    -webkit-animation-delay: $delay;
+    -moz-animation-delay: $delay;
+    -o-animation-delay: $delay;
+}
+
+@mixin animation($animations...) {
+    animation: $animations;
+    -webkit-animation: $animations;
+    -moz-animation: $animations;
+    -o-animation: $animations;
+}
+
+@mixin display-flex {
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+}
+
+@mixin flex-wrap($wrap: wrap) {
+    flex-wrap: $wrap;
+    -webkit-flex-wrap: $wrap;
+    -moz-flex-wrap: $wrap;
+    -ms-flex-wrap: $wrap;
+}
+
+@mixin justify-content($justify) {
+    justify-content: $justify;
+    -webkit-justify-content: $justify;
+    -moz-justify-content: $justify;
+    -ms-justify-content: $justify;
+    -ms-flex-pack: $justify;
+}
+
+@mixin align-items($align) {
+    align-items: $align;
+    -webkit-align-items: $align;
+    -moz-align-items: $align;
+    -ms-align-items: $align;
+}
+
+@mixin flex-direction($direction) {
+    flex-direction: $direction;
+    -webkit-flex-direction: $direction;
+    -moz-flex-direction: $direction;
+    -ms-flex-direction: $direction;
+}
+
+@mixin opacity($value) {
+    $IEValue: $value * 100;
+    opacity: $value;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+ $IEValue + ")";
+    filter: alpha(opacity=$IEValue);
+}
+
+
+/** CUSTOM MIXINS FOR SETUP */
+
+@mixin setImprovedFlex($justify: center,
+    $align: center,
+    $direction: row,
+    $wrap: false) {
+    @include display-flex;
+
+    @if $wrap {
+        @include flex-wrap($wrap);
+    }
+
+    @include justify-content($justify);
+    @include align-items($align);
+    @include flex-direction($direction);
+}
+
+
+@mixin aspect-ratio($aspect...) {
+    width: 100vw;
+    max-height: 100vh;
+
+    /* If nothing is set default to 16:9 */
+    @if length($aspect)==0 {
+        height: 56.25vw;
+        max-width: 177.78vh;
+    }
+
+    /* If one argument is provided create a squre */
+    @if length($aspect)==1 {
+        height: 100vw;
+        max-width: 100vh;
+    }
+
+    /* If two arguments provided, use them normally */
+    @if length($aspect)==2 {
+        $width: nth($aspect, 1);
+        $height: nth($aspect, 2);
+        height: ($height/$width) * 100vw;
+        max-width: ($width/$height) * 100vh;
+    }
+}
+
+@mixin dimensions($dimensions...) {
+
+    /* If no arguments provided, use default for both dimensions */
+    @if length($dimensions)==0 {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* If one argument provided, use it for both dimensions */
+    @if length($dimensions)==1 {
+        $size: nth($dimensions, 1);
+
+        width: $size;
+        height: $size;
+    }
+
+    /* If two arguments provided, use them normally */
+    @if length($dimensions)==2 {
+        $width: nth($dimensions, 1);
+        $height: nth($dimensions, 2);
+
+        width: $width;
+        height: $height;
+    }
+
+    /* If three arguments provided, use the first two as the aspect ratio
+       and calculate dimensions from it and the provided base size */
+    @if length($dimensions)==3 {
+        $ratioX: nth($dimensions, 1);
+        $ratioY: nth($dimensions, 2);
+        $baseSize: nth($dimensions, 3);
+
+        width: $ratioX * $baseSize;
+        height: $ratioY * $baseSize;
+    }
+}
+
+@mixin adjust-position($top, $left, $position: absolute) {
+    position: $position;
+    top: $top;
+    left: $left;
+}
+
+
+/** FLUID FONT CALCULATING FUNCTION */
+
+@function calc-fluid-font-size($minFontSize, $maxFontSize, $min, $max, $viewPorts) {
+    @return calc(#{$minFontSize}px + (#{$maxFontSize} - #{$minFontSize}) * ((100#{$viewPorts} - #{$min}px) / (#{$max} - #{$min})));
+}

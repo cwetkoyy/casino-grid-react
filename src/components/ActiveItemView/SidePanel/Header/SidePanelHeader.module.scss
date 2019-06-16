@@ -1,0 +1,27 @@
+@import './../../../../styles/mixins';
+
+#SidePanelHeader {
+  @include dimensions(100%, 50%);
+  @include setImprovedFlex($direction: column, $justify: space-around);
+}
+
+#SidePanelThumb {
+  @include dimensions(92%, 82%);
+  @include setImprovedFlex();
+}
+
+#SidePanelThumb {
+  img {
+    @include dimensions(70%, 70%);
+    border-radius: 50%;
+    border: 0.1em solid #fff;
+  }
+}
+
+#SidePanelTitle {
+  @include dimensions(100%, 18%);
+  text-align: center;
+  font-size: 0.6em;
+  font-weight: 700;
+  color: #fff;
+}
