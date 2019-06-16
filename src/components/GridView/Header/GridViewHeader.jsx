@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './GridViewHeader.module.scss';
+import Config from './../../../plugins/configHelper';
 
 const GridViewHeader = ({title}) => {
     return (
@@ -11,5 +12,9 @@ const GridViewHeader = ({title}) => {
         </div>
     );
 }
+
+GridViewHeader.defaultProps = {
+    title: Config.missing,
+};
 
 export default GridViewHeader;

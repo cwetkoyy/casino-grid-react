@@ -2,6 +2,7 @@ import React from 'react';
 import SidePanel from './SidePanel/SidePanel.jsx';
 import LoadingScreen from './LoadingScreen/LoadingScreen.jsx';
 import styles from './ActiveItemView.module.scss';
+import Config from './../../plugins/configHelper';
 
 /** ActiveItemView component is the end view, user can see it after he went through 
  * GridView, which is the at the start. ActiveItemView contains simualtion of 
@@ -17,5 +18,12 @@ const ActiveItemView = ({singleGameData: {name, thumb, description}}) => {
         </div>
     );
 }
+
+
+ActiveItemView.defaultProps = {
+    thumb: Config.missing,
+    name: Config.missing,
+    description: Config.missing
+ };
 
 export default ActiveItemView;

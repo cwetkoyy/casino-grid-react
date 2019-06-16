@@ -24,4 +24,8 @@ const GridView = ({emitSingleGame}) => {
   );
 }
 
+GridView.defaultProps = {
+  emitSingleGame: Config.noCallback
+};
+
 export default GridView;

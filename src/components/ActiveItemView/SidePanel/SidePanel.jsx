@@ -2,6 +2,7 @@ import React from 'react';
 import SidePanelBody from './Body/SidePanelBody.jsx';
 import SidePanelHeader from './Header/SidePanelHeader.jsx';
 import styles from './SidePanel.module.scss';
+import Config from './../../../plugins/configHelper';
 
 /** SidePanel component visualizes the thumbnail, title and description of the game user opened */
 const SidePanel = ({name, thumb, description}) => {
@@ -14,5 +15,11 @@ const SidePanel = ({name, thumb, description}) => {
         </div>
     );
 }
+
+SidePanel.defaultProps = {
+    thumb: Config.missing,
+    name: Config.missing,
+    description: Config.missing
+};
 
 export default SidePanel;

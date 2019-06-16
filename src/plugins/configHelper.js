@@ -9,4 +9,11 @@ export default {
 
     /** extracted list of needed data for manipulation and visialisation */
     gamesList:  gamesDataJSON.categories[0].games,
+
+    /** Default Props Values */
+    // if image link is missing 
+    missing: 'Missing data!',
+    
+    // if callback is missing 
+    noCallback: () => console.error("there's no callback passed!")
 };

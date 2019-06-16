@@ -14,5 +14,6 @@ const Big = ({thumb, name, openActiveView}) => {
         </div>
     );
 }
+ 
 
 export default Big;
